@@ -2,7 +2,7 @@ module.exports = {
 
     devServer: {
 
-    proxy: 'https://api.hatchways.io/assessment/students',
+    proxy: 'https://newsapi.org/v2/',
 
     }
 }
