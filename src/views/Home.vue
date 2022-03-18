@@ -13,8 +13,17 @@ import { HTTP } from '../https-common';
 
 export default {
   name: 'Home',
+
   components: {
     NavBar
+  },
+
+  data(){
+
+    return{
+
+      articles:[],
+    }
   },
 
   async created(){
@@ -23,6 +32,8 @@ export default {
 
           const response = await HTTP.get("everything?q=bitcoin");
           const data = response.data.articles
+
+          this.articles = data
 
           console.log(data)
     }
