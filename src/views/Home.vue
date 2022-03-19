@@ -9,7 +9,7 @@
 <script>
 // @ is an alias to /src
 import NavBar from '@/components/NavBar.vue'
-import { HTTP } from '../https-common';
+import { mapGetters, mapState} from 'vuex';
 
 export default {
   name: 'Home',
@@ -18,33 +18,17 @@ export default {
     NavBar
   },
 
-  data(){
+  computed:{
 
-    return{
-
-      articles:[],
-    }
+    ...mapState(['everything']),
   },
 
-  async created(){
+  created(){
 
-    try{
-
-          const response = await HTTP.get("everything?q=bitcoin");
-          const data = response.data.articles
-
-          this.articles = data
-
-          console.log(data)
-    }
-    catch(e){
-
-      console.log(e)
-
-
-    }
-
-  
+    this.$store.dispatch('getEverything');
   }
+
+
+ 
 }
 </script>
